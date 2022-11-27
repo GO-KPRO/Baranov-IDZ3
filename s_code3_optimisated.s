@@ -134,22 +134,22 @@ main:
 	mov	QWORD PTR -8[rbp], rax
 	xor	eax, eax
 	call	clock@PLT
-	mov	QWORD PTR -32[rbp], rax
+	mov	QWORD PTR -32[rbp], rax #beg_time
 	movsd	xmm0, QWORD PTR .LC3[rip]
-	movsd	QWORD PTR -24[rbp], xmm0
+	movsd	QWORD PTR -24[rbp], xmm0 #e
 	cmp	DWORD PTR -84[rbp], 1
 	jne	.L10
 	lea	rdx, -64[rbp]
 	lea	rax, -72[rbp]
-	mov	rsi, rdx
-	mov	rdi, rax
+	mov	rsi, rdx # accuracy
+	mov	rdi, rax # decimal
 	call	generate
 	lea	rax, .LC4[rip]
 	mov	rsi, rax
 	lea	rax, .LC5[rip]
 	mov	rdi, rax
 	call	fopen@PLT
-	mov	QWORD PTR -56[rbp], rax
+	mov	QWORD PTR -56[rbp], rax #fopen
 	jmp	.L11
 .L10:
 	cmp	DWORD PTR -84[rbp], 2
@@ -183,8 +183,8 @@ main:
 	jmp	.L23
 .L11:
 	pxor	xmm0, xmm0
-	movsd	QWORD PTR -48[rbp], xmm0
-	mov	QWORD PTR -40[rbp], 0
+	movsd	QWORD PTR -48[rbp], xmm0 #res
+	mov	QWORD PTR -40[rbp], 0 #n
 	jmp	.L15
 .L22:
 	mov	rax, QWORD PTR -40[rbp]
@@ -268,7 +268,7 @@ main:
 	mov	eax, 1
 	call	fprintf@PLT
 	call	clock@PLT
-	mov	QWORD PTR -16[rbp], rax
+	mov	QWORD PTR -16[rbp], rax #end_time
 	mov	rax, QWORD PTR -16[rbp]
 	sub	rax, QWORD PTR -32[rbp]
 	pxor	xmm0, xmm0
